@@ -32,16 +32,20 @@ ipaNum=`ls -l $exportIpaPre |grep "^d"|wc -l`
 ipaNum=${ipaNum// /}
 echo +++++++++++$ipaNum
 exportIpaPath=${project_path}/IPADir/${development_mode}
-if [ $ipaNum -ge 0 ];then
+if [ $ipaNum -gt 0 ];then
 exportIpaPath=${project_path}/IPADir/${development_mode}_${ipaNum}
+else
+exportIpaPath=${project_path}/IPADir/${development_mode}
 fi
 
 #archive名字
 archiveNum=`ls -l $build_path |grep "^d"|wc -l`
 archiveNum=${archiveNum// /}
 archiveName=${project_name}.xcarchive
-if [ $archiveNum -ge 0 ];then
+if [ $archiveNum -gt 0 ];then
 archiveName=${project_name}_${archiveNum}.xcarchive
+else
+archiveName=${project_name}.xcarchive
 fi
 
 
